@@ -5,9 +5,8 @@ public:
         if (num < 10)
             return num;
         while (num >= 10) {
-            int a = num / 10;
-            int b = num % 10;
-            sum = a + b;
+
+            sum = (num / 10) + (num % 10);
             num = sum;
         }
         return sum;
