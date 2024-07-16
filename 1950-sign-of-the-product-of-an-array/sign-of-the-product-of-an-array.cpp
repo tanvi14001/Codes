@@ -6,7 +6,7 @@ public:
             if (nums[i] == 0)
                 return 0;
             if (nums[i] < 0)
-                neg += 1;
+                neg ++;
         }
         if (neg % 2 == 1)
             return -1;
