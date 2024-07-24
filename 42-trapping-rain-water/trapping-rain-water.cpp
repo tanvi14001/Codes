@@ -26,7 +26,7 @@ public:
 
         for (int i = 0; i < n; i++) {
             int leftmax = pmax[i], rightmax = smax[i];
-
+            if(height[i]<leftmax && height[i]<rightmax)
             total += min(leftmax, rightmax) - height[i];
         }
         return total;
