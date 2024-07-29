@@ -1,17 +1,17 @@
 class Solution {
 public:
     int minOperations(vector<string>& logs) {
-        int ans=0;
+        stack<string>st;
         int n=logs.size();
         for(int i=0;i<n;i++)
         {
             if(logs[i]=="../")
             {
-                if(ans>0) ans--;
+                if(!st.empty()) st.pop();
             }
             if(logs[i]!="../" && logs[i]!="./")
-            ans++;
+            st.push(logs[i]);
         }
-        return ans;
+        return st.size();
     }
 };
