@@ -11,42 +11,44 @@
 class Solution {
 public:
     void reorderList(ListNode* head) {
-        if(head==NULL || head->next==NULL || head->next->next==NULL) return;
+        if (head == NULL || head->next == NULL || head->next->next == NULL)
+            return;
 
-        ListNode* slow=head;
-        ListNode*fast=head->next;
+        ListNode* slow = head;
+        ListNode* fast = head->next;
 
-        while(fast!=NULL && fast->next!=NULL)
-        {
-            slow=slow->next;
-            fast=fast->next->next;
+        // finding mid of the linked list
+        while (fast != NULL && fast->next != NULL) {
+            slow = slow->next;
+            fast = fast->next->next;
         }
 
-        ListNode* curr=slow->next;
-        slow->next=NULL;
-        ListNode*prev=NULL;
+        ListNode* curr = slow->next;
+        slow->next = NULL; // breaking the middle half of the LL
+        ListNode* prev = NULL;
 
-        while(curr!=NULL)
-        {
-            ListNode*temp=curr->next;
-            curr->next=prev;
-            prev=curr;
-            curr=temp;
+        // reversing the secong half of the LL
+        while (curr != NULL) {
+            ListNode* temp = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = temp;
         }
 
-        ListNode*head1=head;
-        ListNode*head2=prev;
+        // Heads of both the LLs
+        ListNode* head1 = head;
+        ListNode* head2 = prev;
 
-        while(head2!=NULL)
-        {
-            ListNode*t1=head1->next;
-            ListNode*t2=head2->next;
+        // Merging the LLs
+        while (head2 != NULL) {
+            ListNode* t1 = head1->next;
+            ListNode* t2 = head2->next;
 
-            head1->next=head2;
-            head2->next=t1;
+            head1->next = head2;
+            head2->next = t1;
 
-            head1=t1;
-            head2=t2;
+            head1 = t1;
+            head2 = t2;
         }
     }
 };
