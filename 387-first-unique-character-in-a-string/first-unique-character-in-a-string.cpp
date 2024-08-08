@@ -2,7 +2,7 @@ class Solution {
 public:
     int firstUniqChar(string s) {
         map<char, int> mpp;
-        for (auto c : s) {
+        for (char c : s) {
             mpp[c]++;
         }
         for (int i = 0; i < s.size(); i++) {
