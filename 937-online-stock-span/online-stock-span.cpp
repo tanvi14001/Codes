@@ -1,20 +1,18 @@
 class StockSpanner {
-public:
-vector<int>arr;                 //BRUTE SOLUTION
-    StockSpanner() {
-        
+public:                         //OPTIMAL SOLUTION
+    int index;
+    stack<pair<int, int>> st;
+    StockSpanner() { index = -1; }
 
-    }
-    
     int next(int price) {
-        arr.push_back(price);
-        int cnt=1;
-        for(int i=arr.size()-2;i>=0;i--)
-        {
-            if(arr[i]<=price) cnt++;
-            else break;
+        index += 1;
+        int ans;
+        while (!st.empty() && price >= st.top().first) {
+            st.pop();
         }
-        return cnt;
+        ans = index - (st.empty() ? -1 : st.top().second);
+        st.push({price, index});
+        return ans;
     }
 };
 
