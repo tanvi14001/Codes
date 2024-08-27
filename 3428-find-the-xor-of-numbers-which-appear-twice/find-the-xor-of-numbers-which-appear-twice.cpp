@@ -7,7 +7,7 @@ public:
         }
         int ans = 0;
         for (auto it : mpp) {
-            if (it.second != 1)
+            if (it.second == 2)
                 ans = ans ^ it.first;
         }
         return ans;
