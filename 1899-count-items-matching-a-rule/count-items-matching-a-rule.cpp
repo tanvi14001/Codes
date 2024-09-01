@@ -2,21 +2,19 @@ class Solution {
 public:
     int countMatches(vector<vector<string>>& items, string ruleKey,
                      string ruleValue) {
-        int cnt = 0;
-        for (int i = 0; i < items.size(); i++) {
-            if (ruleKey == "type") {
-                if (items[i][0] == ruleValue)
-                    cnt++;
-            }
-            if (ruleKey == "color") {
-                if (items[i][1] == ruleValue)
-                    cnt++;
-            }
-            if (ruleKey == "name") {
-                if (items[i][2] == ruleValue)
-                    cnt++;
-            }
+        int i;
+        if (ruleKey == "type")
+            i = 0;
+        if (ruleKey == "color")
+            i = 1;
+        if (ruleKey == "name")
+            i = 2;
+
+        int ans = 0;
+        for (int j = 0; j < items.size(); j++) {
+            if (items[j][i] == ruleValue)
+                ans++;
         }
-        return cnt;
+        return ans;
     }
 };
