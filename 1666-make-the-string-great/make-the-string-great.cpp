@@ -1,23 +1,23 @@
 class Solution {
 public:
     string makeGood(string s) {
-        stack<char> st;
-        for (int i = 0; i < s.size(); i++) {
-            if (!st.empty() && ((isupper(st.top()) && islower(s[i]) &&
-                                 tolower(st.top()) == s[i]) ||
-                                (islower(st.top()) && isupper(s[i]) &&
-                                 (st.top()) == tolower(s[i])))) {
+      int n=s.length();
+        string str="";
+        if(n==1) return s;
+        stack<char>st;
+        for(auto a:s){
+            if(st.empty()) st.push(a);
+            else{
+                if(st.top()-'A'== a-'a' || st.top()-'a' == a-'A')
                 st.pop();
-            } else {
-                st.push(s[i]);
+                else st.push(a);
             }
         }
-        string ans = "";
-        while (!st.empty()) {
-            ans += st.top();
+        while(!st.empty()){
+            str+=st.top();
             st.pop();
         }
-        reverse(ans.begin(), ans.end());
-        return ans;
+        reverse(str.begin(),str.end());
+        return str;   
     }
 };
