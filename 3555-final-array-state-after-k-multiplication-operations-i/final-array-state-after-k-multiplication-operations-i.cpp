@@ -1,9 +1,10 @@
 class Solution {
 public:
     vector<int> getFinalState(vector<int>& nums, int k, int multiplier) {
-        for (int i = 0; i < k; i++) {
+        while (k) {
             auto it = min_element(nums.begin(), nums.end());
             *it *= multiplier;
+            k--;
         }
         return nums;
     }
