@@ -20,12 +20,14 @@ public:
         ListNode* temp2 = list2;
         ListNode* dnode = new ListNode(-1);
         ListNode* temp = dnode;
+
         while (temp1 != NULL && temp2 != NULL) {
             if (temp1->val < temp2->val) {
                 ListNode* newnode = new ListNode(temp1->val);
                 temp->next = newnode;
                 temp = newnode;
                 temp1 = temp1->next;
+
             } else {
                 ListNode* newnode = new ListNode(temp2->val);
                 temp->next = newnode;
@@ -34,7 +36,7 @@ public:
             }
             if (temp1)
                 temp->next = temp1;
-            else
+            if (temp2)
                 temp->next = temp2;
         }
         return dnode->next;
