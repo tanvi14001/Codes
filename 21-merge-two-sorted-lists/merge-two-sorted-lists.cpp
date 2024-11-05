@@ -23,16 +23,13 @@ public:
 
         while (temp1 != NULL && temp2 != NULL) {
             if (temp1->val < temp2->val) {
-                ListNode* newnode = new ListNode(temp1->val);
-                temp->next = newnode;
-                temp = newnode;
+                temp->next = temp1;
                 temp1 = temp1->next;
-
+                temp=temp->next;
             } else {
-                ListNode* newnode = new ListNode(temp2->val);
-                temp->next = newnode;
-                temp = newnode;
+                temp->next = temp2;
                 temp2 = temp2->next;
+                temp=temp->next;
             }
             if (temp1)
                 temp->next = temp1;
